@@ -431,23 +431,23 @@ static int run_tests()
     printf("Score\tRating\tErrors\tFunction\n");
 
     for (i = 0; test_set[i].solution_funct; i++) {
-	int terrors;
-	double tscore;
-	double tpoints;
-	if (!test_fname || strcmp(test_set[i].name,test_fname) == 0) {
-	    int rating = global_rating ? global_rating : test_set[i].rating;
-	    terrors = test_function(&test_set[i]);
-	    errors += terrors;
-	    tscore = terrors == 0 ? 1.0 : 0.0;
-	    tpoints = rating * tscore;
-	    points += tpoints;
-	    max_points += rating;
+			int terrors;
+			double tscore;
+			double tpoints;
+			if (!test_fname || strcmp(test_set[i].name,test_fname) == 0) {
+					int rating = global_rating ? global_rating : test_set[i].rating;
+					terrors = test_function(&test_set[i]);
+					errors += terrors;
+					tscore = terrors == 0 ? 1.0 : 0.0;
+					tpoints = rating * tscore;
+					points += tpoints;
+					max_points += rating;
 
-	    if (grade || terrors < 1)
-		printf(" %.0f\t%d\t%d\t%s\n", 
-		       tpoints, rating, terrors, test_set[i].name);
+					if (grade || terrors < 1)
+				printf(" %.0f\t%d\t%d\t%s\n", 
+							tpoints, rating, terrors, test_set[i].name);
 
-	}
+			}
     }
 
     printf("Total points: %.0f/%.0f\n", points, max_points);
